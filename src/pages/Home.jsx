@@ -7,6 +7,10 @@ const Home = () => {
     const navigate = useNavigate(0)
     const handleFormSubmit = (e) => {
         e.preventDefault();
+        if(!roomCode || !username){
+            alert('Please fill all the fields');
+            return;
+        }
         navigate(`/room/${roomCode}/${username}`);
     }
   return (
@@ -24,10 +28,9 @@ const Home = () => {
               <input
                 value={roomCode}
                 onChange={(e) => setRoomCode(e.target.value)}
-                type="text"
+                type="tel"
                 class="form-control"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
+                maxLength={10}
               />
             </div>
             <div class="input-group mb-3">
